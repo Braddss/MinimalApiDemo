@@ -4,6 +4,6 @@ namespace MinimalApiDemo.Calculators
 {
     public interface IWordCountCalculator
     {
-        Dictionary<string, int> CalculateWordCount(WordCountRequest request);
+        Dictionary<string, int> Calculate(WordCountModel request);
     }
 }

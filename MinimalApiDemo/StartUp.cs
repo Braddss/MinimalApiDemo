@@ -1,16 +1,11 @@
-using Microsoft.AspNetCore.Mvc;
-using MinimalApiDemo.Calculators;
-using MinimalApiDemo.RequestModels;
+using MinimalApiDemo.StartUpHelpers;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddScoped<IWordCountCalculator, WordCountCalculator>();
+
+builder.Services.AddCalculators();
 
 var app = builder.Build();
 
-app.MapPost("/wordcount", (IWordCountCalculator wordCountCalculator, [FromBody] WordCountRequest request) =>
-{
-    var result = wordCountCalculator.CalculateWordCount(request);
-    return Results.Ok(new { result });
-});
+app.AddStringEndPoints();
 
 app.Run();

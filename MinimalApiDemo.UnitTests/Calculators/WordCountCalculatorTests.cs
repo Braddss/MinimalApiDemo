@@ -1,13 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MinimalApiDemo.Calculators;
+﻿using MinimalApiDemo.Calculators;
 using MinimalApiDemo.RequestModels;
-using System.Globalization;
 
 
 namespace MinimalApiDemo.UnitTests.Calculators
 {
     [TestClass]
-    public class MyTestClass
+    public class WordCountCalculatorTests
     {
         [TestMethod]
         public void EmptyArgumentsReturnsZeroWordsTest()
@@ -15,14 +13,14 @@ namespace MinimalApiDemo.UnitTests.Calculators
             // arrange
             var calculator = CreateInstance();
 
-            var request = new WordCountRequest
+            var request = new WordCountModel
             {
                 Text = string.Empty,
                 WordsToCount = [],
             };
 
             // act
-            var result = calculator.CalculateWordCount(request);
+            var result = calculator.Calculate(request);
 
             // assert
             Assert.IsNotNull(result);
@@ -41,14 +39,14 @@ namespace MinimalApiDemo.UnitTests.Calculators
             // arrange
             var calculator = CreateInstance();
 
-            var request = new WordCountRequest
+            var request = new WordCountModel
             {
                 Text = textInput,
                 WordsToCount = [],
             };
 
             // act
-            var result = calculator.CalculateWordCount(request);
+            var result = calculator.Calculate(request);
 
             // assert
             Assert.IsNotNull(result);
@@ -58,21 +56,21 @@ namespace MinimalApiDemo.UnitTests.Calculators
         }
 
         [TestMethod]
-        [DataRow(new string[] { "", "this", "text", "appear", "appears" },
-                    new int[] { 17,  2,      3,      2,        1 })]
+        [DataRow(new string[] { "", "this", "text", "appear", "appears", "magic" },
+                 new int[] { 17, 2, 3, 2, 1, 0 })]
         public void MultipleWordsToCountTest(string[] wordsToCount, int[] expectedCounts)
         {
             // arrange
             var calculator = CreateInstance();
 
-            var request = new WordCountRequest
+            var request = new WordCountModel
             {
                 Text = "This is a sample text. Some words in this text appear multiple times. Text appears three times.",
                 WordsToCount = wordsToCount,
             };
 
             // act
-            var result = calculator.CalculateWordCount(request);
+            var result = calculator.Calculate(request);
 
             // assert
             Assert.IsNotNull(result);
@@ -87,7 +85,6 @@ namespace MinimalApiDemo.UnitTests.Calculators
                 Assert.AreEqual(expectedWordCount, result[wordToCount]);
             }
         }
-
 
         private static WordCountCalculator CreateInstance()
         {

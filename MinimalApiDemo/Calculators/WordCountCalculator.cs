@@ -4,7 +4,7 @@ namespace MinimalApiDemo.Calculators
 {
     internal class WordCountCalculator : IWordCountCalculator
     {
-        public Dictionary<string, int> CalculateWordCount(WordCountRequest request)
+        public Dictionary<string, int> Calculate(WordCountModel request)
         {
             var wordList = request.Text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 

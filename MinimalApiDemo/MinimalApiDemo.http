@@ -1,0 +1,9 @@
+﻿@MinimalApiDemo_HostAddress = https://localhost:7248
+
+POST {{MinimalApiDemo_HostAddress}}/wordcount
+Content-Type: application/json
+{
+  "text": "This is a sample text. Some words in this text appear multiple times. Text appears three times.",
+  "wordsToCount": ["", "this", "text", "appear", "appears"]
+}
+###

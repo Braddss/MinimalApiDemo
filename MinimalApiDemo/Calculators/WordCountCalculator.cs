@@ -1,25 +1,15 @@
-﻿using MinimalApiDemo.RequestModels;
+﻿using MinimalApiDemo.Calculators.Interfaces;
+using MinimalApiDemo.RequestModels;
 
 namespace MinimalApiDemo.Calculators
 {
-    internal class WordCountCalculator : IWordCountCalculator
+    internal class WordCountCalculator(ITextCalculator textCalculator) : IWordCountCalculator
     {
+        private readonly ITextCalculator textCalculator = textCalculator;
+
         public Dictionary<string, int> Calculate(WordCountModel request)
         {
-            var wordList = request.Text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-
-            if (request.WordsToCount.Length == 0)
-            {
-                return new() { { string.Empty, wordList.Length } };
-            }
-
-            var wordCount = request.WordsToCount.ToDictionary(
-                    word => word,
-                    word => wordList.Count(w => w.Contains(word, StringComparison.OrdinalIgnoreCase))
-                );
-
-
-            return wordCount;
+            return this.textCalculator.CheckOccurences(request.Text, request.WordsToCount.ToArray(), true);
         }
     }
 }

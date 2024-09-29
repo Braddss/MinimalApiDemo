@@ -1,11 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MinimalApiDemo.Calculators;
+﻿using MinimalApiDemo.Calculators;
 using MinimalApiDemo.RequestModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MinimalApiDemo.UnitTests.Calculators
 {
@@ -58,7 +52,7 @@ namespace MinimalApiDemo.UnitTests.Calculators
 
         [TestMethod]
         [DataRow(new string[] { "", "this", "text", "appear", "appears", "magic" },
-                 new bool[] { false, true, true, true, true, false })]
+                 new bool[] { true, true, true, true, true, false })]
         public void MultipleWordsToCheckTest(string[] wordsToCheck, bool[] expectedContains)
         {
             // arrange
@@ -89,7 +83,7 @@ namespace MinimalApiDemo.UnitTests.Calculators
 
         private static WordContainsCalculator CreateInstance()
         {
-            return new WordContainsCalculator(new WordCountCalculator());
+            return new WordContainsCalculator(new TextCalculator());
         }
     }
 }

@@ -1,9 +1,7 @@
 ﻿namespace MinimalApiDemo.RequestModels
 {
-    public class WordContainsModel
+    public class WordContainsModel : BaseModel
     {
-        public required string Text { get; set; }
-
         public required string[] WordsToCheck { get; set; }
     }
 }

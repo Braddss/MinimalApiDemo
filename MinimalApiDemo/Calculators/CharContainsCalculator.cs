@@ -3,18 +3,18 @@ using MinimalApiDemo.RequestModels;
 
 namespace MinimalApiDemo.Calculators
 {
-    internal class WordContainsCalculator(ITextCalculator textCalculator) : IWordContainsCalculator
+    internal class CharContainsCalculator(ITextCalculator textCalculator) : ICharContainsCalculator
     {
         private readonly ITextCalculator textCalculator = textCalculator;
 
-        public Dictionary<string, bool> Calculate(WordContainsModel request)
+        public Dictionary<char, bool> Calculate(CharContainsModel request)
         {
-            if (request.WordsToCheck.Length == 0)
+            if (request.CharsToCheck.Length == 0)
             {
                 return [];
             }
 
-            var result = this.textCalculator.CheckOccurences(request.Text, request.WordsToCheck, false);
+            var result = this.textCalculator.CheckOccurences(request.Text, request.CharsToCheck, false);
 
             return result.Select(entry => (entry.Key, entry.Value == 1)).ToDictionary();
         }

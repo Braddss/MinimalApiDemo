@@ -1,9 +1,7 @@
 ﻿namespace MinimalApiDemo.RequestModels
 {
-    public class WordCountModel
+    public class WordCountModel : BaseModel
     {
-        public required string Text { get; set; }
-
         public required string[] WordsToCount { get; set; }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using MinimalApiDemo.RequestModels;
 
-namespace MinimalApiDemo.Calculators
+namespace MinimalApiDemo.Calculators.Interfaces
 {
-    public interface IWordCountCalculator
+    internal interface IWordCountCalculator
     {
         Dictionary<string, int> Calculate(WordCountModel request);
     }

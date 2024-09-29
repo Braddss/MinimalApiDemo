@@ -88,7 +88,7 @@ namespace MinimalApiDemo.UnitTests.Calculators
 
         private static WordCountCalculator CreateInstance()
         {
-            return new WordCountCalculator();
+            return new WordCountCalculator(new TextCalculator());
         }
     }
 }

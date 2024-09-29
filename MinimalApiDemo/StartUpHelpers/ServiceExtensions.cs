@@ -1,4 +1,7 @@
 ﻿using MinimalApiDemo.Calculators;
+using MinimalApiDemo.Calculators.Interfaces;
+using MinimalApiDemo.Validation;
+using MinimalApiDemo.Validation.Interfaces;
 
 namespace MinimalApiDemo.StartUpHelpers
 {
@@ -6,8 +9,18 @@ namespace MinimalApiDemo.StartUpHelpers
     {
         public static IServiceCollection AddCalculators(this IServiceCollection services)
         {
-            services.AddScoped<IWordCountCalculator, WordCountCalculator>();
-            services.AddScoped<IWordContainsCalculator, WordContainsCalculator>();
+            services.AddScoped<ITextCalculator, TextCalculator>()
+                    .AddScoped<IWordCountCalculator, WordCountCalculator>()
+                    .AddScoped<IWordContainsCalculator, WordContainsCalculator>()
+                    .AddScoped<ICharCountCalculator, CharCountCalculator>()
+                    .AddScoped<ICharContainsCalculator, CharContainsCalculator>();
+            return services;
+        }
+
+        public static IServiceCollection AddValidators(this IServiceCollection services)
+        {
+            services.AddScoped<IInputValidator, InputValidator>();
+
             return services;
         }
     }

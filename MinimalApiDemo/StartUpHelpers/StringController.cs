@@ -41,6 +41,11 @@ namespace MinimalApiDemo.StartUpHelpers
                      request);
             });
 
+            app.MapPost("/api/v1/string/base64", () =>
+            {
+
+            });
+
             return app;
         }
 

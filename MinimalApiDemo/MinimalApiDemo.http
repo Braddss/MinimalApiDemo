@@ -1,6 +1,6 @@
 ﻿@MinimalApiDemo_HostAddress = https://localhost:7248
 
-###
+### 1. Count words
 
 POST {{MinimalApiDemo_HostAddress}}/api/v1/string/words/count
 Content-Type: application/json
@@ -10,8 +10,7 @@ Content-Type: application/json
   "wordsToCount": ["", "this", "text", "appear", "appears", "magic"]
 }
 
-###
-
+### 2. Check if words are contained
 
 POST {{MinimalApiDemo_HostAddress}}/api/v1/string/words/contains
 Content-Type: application/json
@@ -21,7 +20,7 @@ Content-Type: application/json
   "wordsToCheck": ["", "this", "text", "appear", "appears", "magic"]
 }
 
-###
+### 3. Count characters
 
 POST {{MinimalApiDemo_HostAddress}}/api/v1/string/characters/count
 Content-Type: application/json
@@ -31,8 +30,7 @@ Content-Type: application/json
   "charsToCount": ["a", "b", "c", " ", "z"]
 }
 
-###
-
+### 4. Check if characters are contained
 
 POST {{MinimalApiDemo_HostAddress}}/api/v1/string/characters/contains
 Content-Type: application/json
@@ -42,44 +40,56 @@ Content-Type: application/json
   "charsToCheck": ["a", "b", "c", " ", "z"]
 }
 
-###
+### 5. Check if string is base64 - invalid string
 
 POST {{MinimalApiDemo_HostAddress}}/api/v1/string/base64/check
 Content-Type: application/json
-# false
 
 {
   "text": "This is a sample text. Some words in this text appear multiple times. Text appears three times."
 }
 
-###
+### 5. Check if string is base64 - valid string
 
 POST {{MinimalApiDemo_HostAddress}}/api/v1/string/base64/check
 Content-Type: application/json
-# true
 
 {
   "text": "VGhpcyBpcyBhIHNhbXBsZSB0ZXh0Lg=="
 }
 
-###
+### 6. Validate Email - valid mail
 
 POST {{MinimalApiDemo_HostAddress}}/api/v1/string/mail/check
 Content-Type: application/json
-# true
 
 {
   "text": "john.doe@example.com"
 }
 
-###
+### 6. Validate Email - invalid mail
 
 POST {{MinimalApiDemo_HostAddress}}/api/v1/string/mail/check
 Content-Type: application/json
-# false
 
 {
   "text": "john.doe@.com"
 }
 
-###
+### Convert to decimal - valid string
+
+POST {{MinimalApiDemo_HostAddress}}/api/v1/string/conversion/decimal
+Content-Type: application/json
+
+{
+    "text": "1,60 0,50_0.30‘2m50"
+}
+
+### Convert to decimal - invalid string
+
+POST {{MinimalApiDemo_HostAddress}}/api/v1/string/conversion/decimal
+Content-Type: application/json
+
+{
+    "text": "f1,60 0,50_0.30‘2m50"
+}

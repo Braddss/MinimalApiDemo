@@ -15,7 +15,8 @@ namespace MinimalApiDemo.StartUpHelpers
                     .AddScoped<ICharCountCalculator, CharCountCalculator>()
                     .AddScoped<ICharContainsCalculator, CharContainsCalculator>()
                     .AddScoped<IBase64Calculator, Base64Calculator>()
-                    .AddScoped<IMailCalculator, MailCalculator>();
+                    .AddScoped<IMailCalculator, MailCalculator>()
+                    .AddScoped<IDecimalConversionCalculator, DecimalConversionCalculator>();
             return services;
         }
 

@@ -57,6 +57,13 @@ namespace MinimalApiDemo.StartUpHelpers
                 return Results.Ok(new { result });
             });
 
+            app.MapPost($"{StringEndpoint}/conversion/decimal", (IDecimalConversionCalculator conversionCalculator, [FromBody] TextModel request) =>
+            {
+                var result = conversionCalculator.CalculateConversion(request);
+
+                return Results.Ok(new { result });
+            });
+
             return app;
         }
 

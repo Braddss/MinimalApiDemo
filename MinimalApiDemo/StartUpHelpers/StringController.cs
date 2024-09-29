@@ -9,7 +9,7 @@ namespace MinimalApiDemo.StartUpHelpers
     {
         public static WebApplication AddStringEndPoints(this WebApplication app)
         {
-            app.MapPost("/api/v1/words/count", (IInputValidator validator, IWordCountCalculator wordCountCalculator, [FromBody] WordCountModel request) =>
+            app.MapPost("/api/v1/string/words/count", (IInputValidator validator, IWordCountCalculator wordCountCalculator, [FromBody] WordCountModel request) =>
             {
                 return ProcessRequest(
                     r => validator.CheckHasDuplicates(r.WordsToCount),
@@ -17,7 +17,7 @@ namespace MinimalApiDemo.StartUpHelpers
                     request);
             });
 
-            app.MapPost("/api/v1/words/contains", (IInputValidator validator, IWordContainsCalculator wordContainsCalculator, [FromBody] WordContainsModel request) =>
+            app.MapPost("/api/v1/string/words/contains", (IInputValidator validator, IWordContainsCalculator wordContainsCalculator, [FromBody] WordContainsModel request) =>
             {
                 return ProcessRequest(
                     r => validator.CheckHasDuplicates(r.WordsToCheck),
@@ -25,7 +25,7 @@ namespace MinimalApiDemo.StartUpHelpers
                     request);
             });
 
-            app.MapPost("/api/v1/characters/count", (IInputValidator validator, ICharCountCalculator charCountCalculator, [FromBody] CharCountModel request) =>
+            app.MapPost("/api/v1/string/characters/count", (IInputValidator validator, ICharCountCalculator charCountCalculator, [FromBody] CharCountModel request) =>
             {
                 return ProcessRequest(
                     r => validator.CheckHasDuplicates(r.CharsToCount.Select(c => c.ToString())),
@@ -33,7 +33,7 @@ namespace MinimalApiDemo.StartUpHelpers
                     request);
             });
 
-            app.MapPost("/api/v1/characters/contains", (IInputValidator validator, ICharContainsCalculator charContainsCalculator, [FromBody] CharContainsModel request) =>
+            app.MapPost("/api/v1/string/characters/contains", (IInputValidator validator, ICharContainsCalculator charContainsCalculator, [FromBody] CharContainsModel request) =>
             {
                 return ProcessRequest(
                      r => validator.CheckHasDuplicates(r.CharsToCheck.Select(c => c.ToString())),
@@ -45,11 +45,11 @@ namespace MinimalApiDemo.StartUpHelpers
         }
 
         private static IResult ProcessRequest<TModel>(
-            Func<TModel, bool> duplicateCheck,
+            Func<TModel, bool> validationCheck,
             Func<TModel, object> calculator,
             TModel request)
         {
-            if (duplicateCheck(request))
+            if (validationCheck(request))
             {
                 return Results.BadRequest(new { error = "Duplicate entries found" });
             }

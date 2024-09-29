@@ -2,7 +2,7 @@
 
 ###
 
-POST {{MinimalApiDemo_HostAddress}}/api/v1/words/count
+POST {{MinimalApiDemo_HostAddress}}/api/v1/string/words/count
 Content-Type: application/json
 {
   "text": "This is a sample text. Some words in this text appear multiple times. Text appears three times.",
@@ -12,7 +12,7 @@ Content-Type: application/json
 ###
 
 
-POST {{MinimalApiDemo_HostAddress}}/api/v1/words/contains
+POST {{MinimalApiDemo_HostAddress}}/api/v1/string/words/contains
 Content-Type: application/json
 {
   "text": "This is a sample text. Some words in this text appear multiple times. Text appears three times.",
@@ -21,7 +21,7 @@ Content-Type: application/json
 
 ###
 
-POST {{MinimalApiDemo_HostAddress}}/api/v1/characters/count
+POST {{MinimalApiDemo_HostAddress}}/api/v1/string/characters/count
 Content-Type: application/json
 {
   "text": "This is a sample text. Some words in this text appear multiple times. Text appears three times.",
@@ -31,7 +31,7 @@ Content-Type: application/json
 ###
 
 
-POST {{MinimalApiDemo_HostAddress}}/api/v1/characters/contains
+POST {{MinimalApiDemo_HostAddress}}/api/v1/string/characters/contains
 Content-Type: application/json
 {
   "text": "This is a sample text. Some words in this text appear multiple times. Text appears three times.",

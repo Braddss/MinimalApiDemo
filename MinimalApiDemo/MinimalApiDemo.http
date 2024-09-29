@@ -1,9 +1,41 @@
 ﻿@MinimalApiDemo_HostAddress = https://localhost:7248
 
-POST {{MinimalApiDemo_HostAddress}}/wordcount
+###
+
+POST {{MinimalApiDemo_HostAddress}}/api/v1/words/count
 Content-Type: application/json
 {
   "text": "This is a sample text. Some words in this text appear multiple times. Text appears three times.",
-  "wordsToCount": ["", "this", "text", "appear", "appears"]
+  "wordsToCount": ["", "this", "text", "appear", "appears", "magic"]
 }
+
+###
+
+
+POST {{MinimalApiDemo_HostAddress}}/api/v1/words/contains
+Content-Type: application/json
+{
+  "text": "This is a sample text. Some words in this text appear multiple times. Text appears three times.",
+  "wordsToCheck": ["", "this", "text", "appear", "appears", "magic"]
+}
+
+###
+
+POST {{MinimalApiDemo_HostAddress}}/api/v1/characters/count
+Content-Type: application/json
+{
+  "text": "This is a sample text. Some words in this text appear multiple times. Text appears three times.",
+  "charsToCount": ["a", "b", "c", " ", "z"]
+}
+
+###
+
+
+POST {{MinimalApiDemo_HostAddress}}/api/v1/characters/contains
+Content-Type: application/json
+{
+  "text": "This is a sample text. Some words in this text appear multiple times. Text appears three times.",
+  "charsToCheck": ["a", "b", "c", " ", "z"]
+}
+
 ###

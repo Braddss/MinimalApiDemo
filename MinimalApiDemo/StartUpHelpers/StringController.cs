@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MinimalApiDemo.Calculators;
 using MinimalApiDemo.Calculators.Interfaces;
 using MinimalApiDemo.RequestModels;
 using MinimalApiDemo.Validation.Interfaces;

@@ -13,7 +13,9 @@ namespace MinimalApiDemo.StartUpHelpers
                     .AddScoped<IWordCountCalculator, WordCountCalculator>()
                     .AddScoped<IWordContainsCalculator, WordContainsCalculator>()
                     .AddScoped<ICharCountCalculator, CharCountCalculator>()
-                    .AddScoped<ICharContainsCalculator, CharContainsCalculator>();
+                    .AddScoped<ICharContainsCalculator, CharContainsCalculator>()
+                    .AddScoped<IBase64Calculator, Base64Calculator>()
+                    .AddScoped<IMailCalculator, MailCalculator>();
             return services;
         }
 

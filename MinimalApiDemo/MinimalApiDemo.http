@@ -4,6 +4,7 @@
 
 POST {{MinimalApiDemo_HostAddress}}/api/v1/string/words/count
 Content-Type: application/json
+
 {
   "text": "This is a sample text. Some words in this text appear multiple times. Text appears three times.",
   "wordsToCount": ["", "this", "text", "appear", "appears", "magic"]
@@ -14,6 +15,7 @@ Content-Type: application/json
 
 POST {{MinimalApiDemo_HostAddress}}/api/v1/string/words/contains
 Content-Type: application/json
+
 {
   "text": "This is a sample text. Some words in this text appear multiple times. Text appears three times.",
   "wordsToCheck": ["", "this", "text", "appear", "appears", "magic"]
@@ -23,6 +25,7 @@ Content-Type: application/json
 
 POST {{MinimalApiDemo_HostAddress}}/api/v1/string/characters/count
 Content-Type: application/json
+
 {
   "text": "This is a sample text. Some words in this text appear multiple times. Text appears three times.",
   "charsToCount": ["a", "b", "c", " ", "z"]
@@ -33,9 +36,50 @@ Content-Type: application/json
 
 POST {{MinimalApiDemo_HostAddress}}/api/v1/string/characters/contains
 Content-Type: application/json
+
 {
   "text": "This is a sample text. Some words in this text appear multiple times. Text appears three times.",
   "charsToCheck": ["a", "b", "c", " ", "z"]
+}
+
+###
+
+POST {{MinimalApiDemo_HostAddress}}/api/v1/string/base64/check
+Content-Type: application/json
+# false
+
+{
+  "text": "This is a sample text. Some words in this text appear multiple times. Text appears three times."
+}
+
+###
+
+POST {{MinimalApiDemo_HostAddress}}/api/v1/string/base64/check
+Content-Type: application/json
+# true
+
+{
+  "text": "VGhpcyBpcyBhIHNhbXBsZSB0ZXh0Lg=="
+}
+
+###
+
+POST {{MinimalApiDemo_HostAddress}}/api/v1/string/mail/check
+Content-Type: application/json
+# true
+
+{
+  "text": "john.doe@example.com"
+}
+
+###
+
+POST {{MinimalApiDemo_HostAddress}}/api/v1/string/mail/check
+Content-Type: application/json
+# false
+
+{
+  "text": "john.doe@.com"
 }
 
 ###

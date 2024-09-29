@@ -7,9 +7,11 @@ namespace MinimalApiDemo.StartUpHelpers
 {
     internal static class StringController
     {
+        private const string StringEndpoint = "/api/v1/string";
+
         public static WebApplication AddStringEndPoints(this WebApplication app)
         {
-            app.MapPost("/api/v1/string/words/count", (IInputValidator validator, IWordCountCalculator wordCountCalculator, [FromBody] WordCountModel request) =>
+            app.MapPost($"{StringEndpoint}/words/count", (IInputValidator validator, IWordCountCalculator wordCountCalculator, [FromBody] WordCountModel request) =>
             {
                 return ProcessRequest(
                     r => validator.CheckHasDuplicates(r.WordsToCount),
@@ -17,7 +19,7 @@ namespace MinimalApiDemo.StartUpHelpers
                     request);
             });
 
-            app.MapPost("/api/v1/string/words/contains", (IInputValidator validator, IWordContainsCalculator wordContainsCalculator, [FromBody] WordContainsModel request) =>
+            app.MapPost($"{StringEndpoint}/words/contains", (IInputValidator validator, IWordContainsCalculator wordContainsCalculator, [FromBody] WordContainsModel request) =>
             {
                 return ProcessRequest(
                     r => validator.CheckHasDuplicates(r.WordsToCheck),
@@ -25,7 +27,7 @@ namespace MinimalApiDemo.StartUpHelpers
                     request);
             });
 
-            app.MapPost("/api/v1/string/characters/count", (IInputValidator validator, ICharCountCalculator charCountCalculator, [FromBody] CharCountModel request) =>
+            app.MapPost($"{StringEndpoint}/characters/count", (IInputValidator validator, ICharCountCalculator charCountCalculator, [FromBody] CharCountModel request) =>
             {
                 return ProcessRequest(
                     r => validator.CheckHasDuplicates(r.CharsToCount.Select(c => c.ToString())),
@@ -33,7 +35,7 @@ namespace MinimalApiDemo.StartUpHelpers
                     request);
             });
 
-            app.MapPost("/api/v1/string/characters/contains", (IInputValidator validator, ICharContainsCalculator charContainsCalculator, [FromBody] CharContainsModel request) =>
+            app.MapPost($"{StringEndpoint}/characters/contains", (IInputValidator validator, ICharContainsCalculator charContainsCalculator, [FromBody] CharContainsModel request) =>
             {
                 return ProcessRequest(
                      r => validator.CheckHasDuplicates(r.CharsToCheck.Select(c => c.ToString())),
@@ -41,9 +43,18 @@ namespace MinimalApiDemo.StartUpHelpers
                      request);
             });
 
-            app.MapPost("/api/v1/string/base64", () =>
+            app.MapPost($"{StringEndpoint}/base64/check", (IBase64Calculator base64Calculator, [FromBody] TextModel request) =>
             {
+                var result = base64Calculator.CalculateIsBase64String(request);
 
+                return Results.Ok(new { result });
+            });
+
+            app.MapPost($"{StringEndpoint}/mail/check", (IMailCalculator mailCalculator, [FromBody] TextModel request) =>
+            {
+                var result = mailCalculator.CalculateIsValidMail(request);
+
+                return Results.Ok(new { result });
             });
 
             return app;

@@ -9,7 +9,7 @@ namespace MinimalApiDemo.Calculators
         public bool CalculateIsBase64String(BaseModel model)
         {
             Span<byte> buffer = new Span<byte>(new byte[model.Text.Length]);
-            return Convert.TryFromBase64String(model.Text, buffer, out int bytesParsed);
+            return Convert.TryFromBase64String(model.Text, buffer, out int _);
         }
     }
 }

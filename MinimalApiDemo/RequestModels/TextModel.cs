@@ -1,7 +1,6 @@
 ﻿namespace MinimalApiDemo.RequestModels
 {
-    public class TextModel
+    public class TextModel : BaseModel
     {
-        asöldfkasödjlfk //Dototoasd
     }
 }

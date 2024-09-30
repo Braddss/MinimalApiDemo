@@ -1,0 +1,54 @@
+Start Benchmark
+
+Each enpoint is tested 10000 times
+
+Endpoint: /words/count
+Input: {"WordsToCount":["","the","life","fox"],"Text":"The quick brown fox jumps over the lazy dog. This se
+Time taken: 2206 ms
+Time taken per request: 0,2206 ms
+Response: {"result":{"":146,"the":23,"life":2,"fox":3}}
+----------------------------------------------------------------------------------------------------
+
+Endpoint: /words/contains
+Input: {"WordsToCheck":["","the","life","fox"],"Text":"The quick brown fox jumps over the lazy dog. This se
+Time taken: 1834 ms
+Time taken per request: 0,1834 ms
+Response: {"result":{"":true,"the":true,"life":true,"fox":true}}
+----------------------------------------------------------------------------------------------------
+
+Endpoint: /characters/count
+Input: {"CharsToCount":["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u"
+Time taken: 3680 ms
+Time taken per request: 0,368 ms
+Response: {"result":{"a":41,"b":15,"c":19,"d":13,"e":90,"f":20,"g":13,"h":37,"i":47,"j":2,"k":3,"l":29,"m":14,"n":51,"o":42,"p":9,"q":4,"r":44,"s":51,"t":76,"u":23,"v":9,"w":8,"x":3,"y":14,"z":1,".":11,"3":0}}
+----------------------------------------------------------------------------------------------------
+
+Endpoint: /characters/contains
+Input: {"CharsToCheck":["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u"
+Time taken: 1965 ms
+Time taken per request: 0,1965 ms
+Response: {"result":{"a":true,"b":true,"c":true,"d":true,"e":true,"f":true,"g":true,"h":true,"i":true,"j":true,"k":true,"l":true,"m":true,"n":true,"o":true,"p":true,"q":true,"r":true,"s":true,"t":true,"u":true,"v":true,"w":true,"x":true,"y":true,"z":true,".":true,"3":false}}
+----------------------------------------------------------------------------------------------------
+
+Endpoint: /base64/check
+Input: {"Text":"VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4gVGhpcyBzZW50ZW5jZSBpcyBvZnRlbiB
+Time taken: 1613 ms
+Time taken per request: 0,1613 ms
+Response: {"result":true}
+----------------------------------------------------------------------------------------------------
+
+Endpoint: /mail/check
+Input: {"Text":"test@example.com"}
+Time taken: 1849 ms
+Time taken per request: 0,1849 ms
+Response: {"result":true}
+----------------------------------------------------------------------------------------------------
+
+Endpoint: /conversion/decimal
+Input: {"Text":"1,6.00.500.3025m"}
+Time taken: 1503 ms
+Time taken per request: 0,1503 ms
+Response: {"result":"1600500,3025"}
+----------------------------------------------------------------------------------------------------
+
+Benchmark finished!
